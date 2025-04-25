@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ba3fr67y31rib"
+path="res://.godot/imported/btr_82_autocannon_02.obj-5af22f6fbd9d6b07be6b4c0a8df7cd45.mesh"
+
+[deps]
+
+files=["res://.godot/imported/btr_82_autocannon_02.obj-5af22f6fbd9d6b07be6b4c0a8df7cd45.mesh"]
+
+source_file="res://assets/models/btr-82/btr_82_autocannon_02.obj"
+dest_files=["res://.godot/imported/btr_82_autocannon_02.obj-5af22f6fbd9d6b07be6b4c0a8df7cd45.mesh", "res://.godot/imported/btr_82_autocannon_02.obj-5af22f6fbd9d6b07be6b4c0a8df7cd45.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

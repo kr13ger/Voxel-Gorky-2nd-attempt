@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0chred8bknkl"
+path="res://.godot/imported/btr_82_wheel_01.obj-10d7aa9f9a9b9b862b8458c2e5afc5be.mesh"
+
+[deps]
+
+files=["res://.godot/imported/btr_82_wheel_01.obj-10d7aa9f9a9b9b862b8458c2e5afc5be.mesh"]
+
+source_file="res://assets/models/btr-82/btr_82_wheel_01.obj"
+dest_files=["res://.godot/imported/btr_82_wheel_01.obj-10d7aa9f9a9b9b862b8458c2e5afc5be.mesh", "res://.godot/imported/btr_82_wheel_01.obj-10d7aa9f9a9b9b862b8458c2e5afc5be.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
