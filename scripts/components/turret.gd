@@ -26,6 +26,18 @@ var is_rotating: bool = false
 func _ready() -> void:
 	super._ready()
 	
+	# Automatically set the weapon_slot if not manually set
+	if not weapon_slot and has_node("WeaponSlot"):
+		weapon_slot = get_node("WeaponSlot")
+	
+	# Automatically find and attach any weapon in the weapon slot
+	if weapon_slot and weapon_slot.get_child_count() > 0:
+		for child in weapon_slot.get_children():
+			if child is Weapon:
+				attached_weapon = child
+				Logger.info("Automatically attached weapon: %s" % child.display_name, "Turret")
+				break
+	
 	if not weapon_slot:
 		Logger.warning("Turret has no weapon slot defined", "Turret")
 	

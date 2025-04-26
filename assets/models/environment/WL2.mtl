@@ -1,0 +1,202 @@
+# Blender 4.4.1 MTL File: 'None'
+# www.blender.org
+
+newmtl ASPHALT_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Asphalt010/Asphalt010_Color.png
+
+newmtl BRIDGE_DEFAULT_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Kd 0.250980 0.250980 0.250980
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+
+newmtl BRIDGE_PILLAR_DEFAULT_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Kd 0.250980 0.250980 0.250980
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+
+newmtl BUILDING_DEFAULT_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Plaster002/Plaster002_Color.jpg
+
+newmtl CHAIN_LINK_FENCE_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Fence006/Fence006_Color.png
+map_d C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Fence006/Fence006_Color.png
+
+newmtl EARTH_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Ground042/Ground042_Color.jpg
+
+newmtl GLASS_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/custom/Glass/Glass_Color.jpg
+
+newmtl MAT_59_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+illum 1
+map_Kd WL.obj_textures/tex-205-736014563807009336.png
+map_d WL.obj_textures/tex-205-736014563807009336.png
+
+newmtl MAT_60_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+illum 1
+map_Kd WL.obj_textures/tex-1135127309641437380.png
+map_d WL.obj_textures/tex-1135127309641437380.png
+
+newmtl METAL_FENCE_POST_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Kd 0.368627 0.388235 0.400000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+
+newmtl PITCH_BEACHVOLLEYBALL_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Ground033/Ground033_Color.jpg
+
+newmtl PITCH_BEACHVOLLEYBALL_1
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/pitchBeachvolleyball.png
+
+newmtl PLASTIC_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Plastic010/Plastic010_Color.jpg
+
+newmtl ROAD_MARKING_DASHED_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Asphalt010/Asphalt010_Color.png
+
+newmtl ROAD_MARKING_DASHED_1
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/road_marking_dash.png
+
+newmtl ROOF_DEFAULT_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/RoofingTiles010/RoofingTiles010_Color.jpg
+
+newmtl SAND_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Ground033/Ground033_Color.jpg
+
+newmtl STEEL_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Metal002/Metal002_Color.jpg
+
+newmtl TERRAIN_DEFAULT_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Ground003/Ground003_Color.jpg
+
+newmtl WOOD_0
+Ns 92.156860
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/Konstantin/Downloads/OSM2World-latest-bin/textures/cc0textures/Wood026/Wood026_Color.jpg

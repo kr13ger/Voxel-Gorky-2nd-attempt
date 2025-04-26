@@ -6,6 +6,9 @@
 
 [node name="Wheel" type="Node3D"]
 script = ExtResource("1_otwe6")
+wheel_radius = 500.0
+wheel_width = 2.0
+is_steering_wheel = true
 
 [node name="WheelModel" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_6enb2")

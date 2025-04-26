@@ -8,7 +8,7 @@ class_name PlayerVehicle
 
 # Physics parameters
 @export_group("Vehicle Physics")
-@export var engine_force_value: float = 20000.0  # Increased for better movement
+@export var engine_force_value: float = 200.0  # Increased for better movement
 @export var brake_force_value: float = 100.0
 @export var max_steering_angle: float = 0.5
 @export var steering_speed: float = 2.0
@@ -94,6 +94,10 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	_handle_input(delta)
+	
+	# Handle turret rotation
+	if turret:
+		turret.handle_input(delta)
 	
 	# Debug vehicle state
 	if Input.is_action_just_pressed("accelerate") or Input.is_action_just_pressed("brake"):
