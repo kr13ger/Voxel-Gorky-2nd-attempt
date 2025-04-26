@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://baouh73lb004v"]
+
+[ext_resource type="Script" uid="uid://bp62ixlnc0ra4" path="res://scripts/components/auto_cannon.gd" id="1_cng0k"]
+[ext_resource type="ArrayMesh" uid="uid://ba3fr67y31rib" path="res://assets/models/btr-82/btr_82_autocannon_02.obj" id="2_hytiw"]
+
+[node name="AutoCannon" type="Node3D"]
+script = ExtResource("1_cng0k")
+
+[node name="CannonModel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_hytiw")
+
+[node name="MuzzlePoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0818214, 0.416031, 9)
+
+[node name="ShellEjectionPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

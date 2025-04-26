@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwvdln4nw85oe"]
+
+[ext_resource type="Script" uid="uid://dm076flanng83" path="res://scripts/components/hull.gd" id="1_78kgm"]
+[ext_resource type="ArrayMesh" uid="uid://bcln3qfag8xku" path="res://assets/models/btr-82/hull_btr_82_01.obj" id="2_imh5v"]
+
+[node name="Hull" type="Node3D"]
+script = ExtResource("1_78kgm")
+
+[node name="HullModel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_imh5v")
+
+[node name="Wheel1" type="Node3D" parent="."]
+
+[node name="Wheel2" type="Node3D" parent="."]
+
+[node name="Wheel3" type="Node3D" parent="."]
+
+[node name="Wheel4" type="Node3D" parent="."]
+
+[node name="Wheel5" type="Node3D" parent="."]
+
+[node name="Wheel6" type="Node3D" parent="."]
+
+[node name="Wheel7" type="Node3D" parent="."]
+
+[node name="Wheel8" type="Node3D" parent="."]
+
+[node name="TurretSlot" type="Node3D" parent="."]

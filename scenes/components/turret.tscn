@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://wj61jul5liwi"]
+
+[ext_resource type="Script" uid="uid://cww6ewjq4bovw" path="res://scripts/components/turret.gd" id="1_b0ocp"]
+[ext_resource type="ArrayMesh" uid="uid://dxc04vooxiffi" path="res://assets/models/btr-82/btr_82_turret_02.obj" id="2_amkko"]
+
+[node name="Turret" type="Node3D"]
+script = ExtResource("1_b0ocp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_amkko")
+
+[node name="WeaponSlot" type="Node3D" parent="."]

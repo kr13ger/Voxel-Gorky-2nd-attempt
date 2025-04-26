@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxp0ngr7mf8os"]
+
+[ext_resource type="Script" uid="uid://bv4uj6t1ug3s7" path="res://scripts/main_scene.gd" id="1_72ix8"]
+[ext_resource type="PackedScene" uid="uid://cqhw1maxfbe47" path="res://scenes/vehicles/player_vehicle.tscn" id="2_2vj2h"]
+
+[sub_resource type="Sky" id="Sky_2vj2h"]
+
+[sub_resource type="Environment" id="Environment_y0acb"]
+sky = SubResource("Sky_2vj2h")
+sky_custom_fov = 58.7
+ambient_light_color = Color(0.847954, 0.766995, 0.525334, 1)
+ambient_light_energy = 0.0
+reflected_light_source = 2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0326
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4d2a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u81e1"]
+size = Vector3(9000, 1, 9000)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_72ix8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y0acb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 301, 0)
+light_color = Color(1, 1, 0.815686, 1)
+light_energy = 2.371
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_j4d2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00848746, 0, 0)
+shape = SubResource("BoxShape3D_u81e1")
+debug_color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="PlayerVehicle" parent="." instance=ExtResource("2_2vj2h")]

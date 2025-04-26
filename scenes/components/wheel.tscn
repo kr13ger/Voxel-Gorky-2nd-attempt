@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ttswacu7wiqe"]
+
+[ext_resource type="Script" uid="uid://frd6ueqvc7xl" path="res://scripts/components/wheel.gd" id="1_otwe6"]
+[ext_resource type="ArrayMesh" uid="uid://cdo86o1ooma5h" path="res://assets/models/btr-82/btr_82_wheel_02.obj" id="2_6enb2"]
+[ext_resource type="ArrayMesh" uid="uid://0chred8bknkl" path="res://assets/models/btr-82/btr_82_wheel_01.obj" id="2_v2sjd"]
+
+[node name="Wheel" type="Node3D"]
+script = ExtResource("1_otwe6")
+
+[node name="WheelModel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_6enb2")
+
+[node name="DamagedWheelModel" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("2_v2sjd")

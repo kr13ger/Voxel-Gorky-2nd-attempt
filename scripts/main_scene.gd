@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _setup_environment() -> void:
 	# Set physics parameters
-	Physics.set_gravity(Vector3(0, -9.8, 0))
+	#Physics.set_gravity(Vector3(0, -9.8, 0))
 	
 	# Adjust physics settings for better vehicle simulation
 	ProjectSettings.set_setting("physics/3d/default_contact_bias", 0.0001)
