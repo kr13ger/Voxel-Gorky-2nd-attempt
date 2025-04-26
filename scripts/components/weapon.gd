@@ -41,7 +41,7 @@ func _ready() -> void:
 	
 	# Initialize ammo
 	current_ammo = magazine_size
-	total_ammo = unlimited_ammo ? -1 : magazine_size * 5  # Default 5 magazines
+	total_ammo = -1 if unlimited_ammo else magazine_size * 5  # Default 5 magazines
 	
 	if not muzzle_point:
 		Logger.warning("Weapon has no muzzle point defined", "Weapon")

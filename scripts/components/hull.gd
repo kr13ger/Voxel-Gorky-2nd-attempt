@@ -103,9 +103,9 @@ func get_armor_thickness(hit_normal: Vector3) -> float:
 		0:  # X-axis (sides)
 			return armor_thickness_sides
 		1:  # Y-axis (top/bottom)
-			return local_normal.y > 0 ? armor_thickness_top : armor_thickness_bottom
+			return armor_thickness_top if local_normal.y > 0 else armor_thickness_bottom
 		2:  # Z-axis (front/rear)
-			return local_normal.z < 0 ? armor_thickness_front : armor_thickness_rear
+			return armor_thickness_front if local_normal.z < 0 else armor_thickness_rear
 	
 	# Fallback
 	return armor_thickness_sides

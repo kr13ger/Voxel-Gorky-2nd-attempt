@@ -12,7 +12,7 @@ size = Vector3(8, 5, 27)
 [node name="PlayerVehicle" type="VehicleBody3D"]
 script = ExtResource("1_4ptjn")
 wheel_paths = Array[NodePath]([NodePath("LeftWheel"), NodePath("LeftWheel2"), NodePath("LeftWheel3"), NodePath("LeftWheel4"), NodePath("RightWheel"), NodePath("RightWheel2"), NodePath("RightWheel3"), NodePath("RightWheel4")])
-turret_path = NodePath("Hull/TurretSlot/Turret/WeaponSlot")
+turret_path = NodePath("Hull/TurretSlot/Turret")
 hull_node_path = NodePath("Hull")
 
 [node name="Hull" parent="." instance=ExtResource("2_gij4i")]

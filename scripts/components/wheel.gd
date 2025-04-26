@@ -19,7 +19,7 @@ class_name Wheel
 @export var suspension_max_force: float = 6000.0
 @export var damping_compression: float = 0.3
 @export var damping_relaxation: float = 0.5
-@export var roll_influence: float = 0.1
+# Removed roll_influence as it's not a valid property in Godot 4.4
 
 # Visual properties
 @export_group("Visual Properties")
@@ -78,7 +78,7 @@ func _apply_physics_properties() -> void:
 	vehicle_wheel_node.damping_relaxation = damping_relaxation
 	vehicle_wheel_node.use_as_steering = is_steering_wheel
 	vehicle_wheel_node.use_as_traction = is_drive_wheel
-	vehicle_wheel_node.roll_influence = roll_influence
+	# Removed roll_influence assignment as it's not a valid property
 
 func _process(delta: float) -> void:
 	if is_destroyed:

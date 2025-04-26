@@ -1,6 +1,7 @@
-extends Vehicle
 # PlayerVehicle.gd
 # Location: res://scripts/vehicles/player_vehicle.gd
+
+extends Vehicle
 # Player-controlled vehicle (BTR-82a)
 
 class_name PlayerVehicle
@@ -22,9 +23,10 @@ var current_brake: float = 0.0
 @export var wheel_paths: Array[NodePath] = []
 var wheels: Array[VehicleWheel3D] = []
 
-# Reference to turret
+# Reference to turret and weapon
 @export var turret_path: NodePath
-var turret: Component = null
+var turret: Turret = null  # Changed to Turret type for clarity
+var weapon: Weapon = null  # Added to hold reference to the weapon
 
 func _ready() -> void:
 	super._ready()
@@ -39,9 +41,26 @@ func _ready() -> void:
 			if wheel is VehicleWheel3D:
 				wheels.append(wheel)
 	
-	# Get turret reference
+	# Get turret reference - making sure we get the actual Turret component
 	if not turret_path.is_empty():
-		turret = get_node(turret_path)
+		var node = get_node(turret_path)
+		if node is Turret:
+			turret = node
+			# If we want the weapon, we can get it from the turret
+			if turret.attached_weapon is Weapon:
+				weapon = turret.attached_weapon
+		else:
+			# If path points to a weapon slot instead of a turret, try to find the parent turret
+			var parent = node.get_parent()
+			if parent is Turret:
+				turret = parent
+				# Find weapon in the slot
+				for child in node.get_children():
+					if child is Weapon:
+						weapon = child
+						break
+			else:
+				Logger.error("turret_path does not point to a Turret component", "PlayerVehicle")
 	
 	Logger.info("Player vehicle initialized with %d wheels" % wheels.size(), "PlayerVehicle")
 
