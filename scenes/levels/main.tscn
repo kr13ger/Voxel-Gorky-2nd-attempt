@@ -17,7 +17,8 @@ volumetric_fog_density = 0.0326
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4d2a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u81e1"]
-size = Vector3(9000, 1, 9000)
+margin = 0.788
+size = Vector3(9000, 3, 9000)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_72ix8")
@@ -31,11 +32,12 @@ light_color = Color(1, 1, 0.815686, 1)
 light_energy = 2.371
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75679, 0)
 physics_material_override = SubResource("PhysicsMaterial_j4d2a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00848746, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00848746, -3.42869, 0)
 shape = SubResource("BoxShape3D_u81e1")
-debug_color = Color(0.45098, 0.45098, 0.45098, 1)
+debug_color = Color(0, 0, 0, 1)
 
 [node name="PlayerVehicle" parent="." instance=ExtResource("2_2vj2h")]

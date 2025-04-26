@@ -1,5 +1,5 @@
-# PlayerVehicle.gd
 # Location: res://scripts/vehicles/player_vehicle.gd
+# Fix for vehicle movement issue
 
 extends Vehicle
 # Player-controlled vehicle (BTR-82a)
@@ -8,11 +8,11 @@ class_name PlayerVehicle
 
 # Physics parameters
 @export_group("Vehicle Physics")
-@export var engine_force_value: float = 300.0
-@export var brake_force_value: float = 45.0
-@export var max_steering_angle: float = 0.35
-@export var steering_speed: float = 1.0  # How quickly the steering responds
-@export var mass_override: float = 13600.0  # Mass of BTR-82a in kg
+@export var engine_force_value: float = 20000.0  # Increased for better movement
+@export var brake_force_value: float = 100.0
+@export var max_steering_angle: float = 0.5
+@export var steering_speed: float = 2.0
+@export var mass_override: float = 13600.0
 
 # Current steering state
 var current_steering: float = 0.0
@@ -25,8 +25,8 @@ var wheels: Array[VehicleWheel3D] = []
 
 # Reference to turret and weapon
 @export var turret_path: NodePath
-var turret: Turret = null  # Changed to Turret type for clarity
-var weapon: Weapon = null  # Added to hold reference to the weapon
+var turret: Turret = null
+var weapon: Weapon = null
 
 func _ready() -> void:
 	super._ready()
@@ -34,12 +34,37 @@ func _ready() -> void:
 	# Override mass for more realistic physics
 	mass = mass_override
 	
+	# Debug print to confirm input bindings
+	Logger.debug("Input bindings: accelerate=%s, brake=%s, steer_left=%s, steer_right=%s" % 
+		[InputMap.has_action("accelerate"), InputMap.has_action("brake"), 
+		InputMap.has_action("steer_left"), InputMap.has_action("steer_right")], "PlayerVehicle")
+	
 	# Get wheel references
 	for path in wheel_paths:
 		if not path.is_empty():
 			var wheel = get_node(path)
 			if wheel is VehicleWheel3D:
 				wheels.append(wheel)
+				Logger.debug("Added wheel: %s, uses_as_traction=%s, use_as_steering=%s" % 
+					[wheel.name, wheel.use_as_traction, wheel.use_as_steering], "PlayerVehicle")
+	
+	# Configure wheels if none are set for traction
+	var has_traction_wheel = false
+	var has_steering_wheel = false
+	
+	for wheel in wheels:
+		if wheel.use_as_traction:
+			has_traction_wheel = true
+		if wheel.use_as_steering:
+			has_steering_wheel = true
+	
+	# If no wheels are set for traction or steering, configure the first 4 as both
+	if not has_traction_wheel or not has_steering_wheel:
+		Logger.warning("No traction or steering wheels configured, setting defaults", "PlayerVehicle")
+		for i in range(min(4, wheels.size())):
+			wheels[i].use_as_traction = true
+			wheels[i].use_as_steering = true
+			Logger.debug("Configured wheel %s as traction and steering" % wheels[i].name, "PlayerVehicle")
 	
 	# Get turret reference - making sure we get the actual Turret component
 	if not turret_path.is_empty():
@@ -69,12 +94,19 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	_handle_input(delta)
+	
+	# Debug vehicle state
+	if Input.is_action_just_pressed("accelerate") or Input.is_action_just_pressed("brake"):
+		Logger.debug("Input detected: accelerate=%s, brake=%s, current_engine_force=%.2f" % 
+			[Input.is_action_pressed("accelerate"), Input.is_action_pressed("brake"), current_engine_force], "PlayerVehicle")
 
-# Handle player input
 func _handle_input(delta: float) -> void:
 	# Get input values
 	var throttle_input = Input.get_axis("brake", "accelerate")
 	var steering_input = Input.get_axis("steer_right", "steer_left")
+	
+	if abs(throttle_input) > 0.01 or abs(steering_input) > 0.01:
+		Logger.debug("Input values: throttle=%.2f, steering=%.2f" % [throttle_input, steering_input], "PlayerVehicle")
 	
 	# Smooth steering for more realistic feel
 	var target_steering = steering_input * max_steering_angle
@@ -98,7 +130,7 @@ func _handle_input(delta: float) -> void:
 			current_brake = brake_force_value
 		else:
 			# Vehicle is stopped or moving backward, apply reverse
-			current_engine_force = engine_force_value * throttle_input
+			current_engine_force = engine_force_value * throttle_input * 0.5  # 50% power for reverse
 			current_brake = 0.0
 	else:
 		# No input, gradually slow down
@@ -110,6 +142,10 @@ func _handle_input(delta: float) -> void:
 		if wheel.use_as_traction:
 			wheel.engine_force = current_engine_force
 			wheel.brake = current_brake
+			
+	# Direct debug access to VehicleBody3D properties
+	engine_force = current_engine_force
+	brake = current_brake
 
 # Override the destroy method to handle player-specific destruction behavior
 func _on_destroyed() -> void:

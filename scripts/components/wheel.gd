@@ -29,17 +29,22 @@ class_name Wheel
 
 # References
 var vehicle_wheel_node: VehicleWheel3D = null
+var accumulated_rotation: float = 0.0
+var last_position: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	super._ready()
 	
-	# Find the VehicleWheel3D node that this component is attached to
+	# Initialize wheel node reference and physics properties
 	vehicle_wheel_node = _find_vehicle_wheel()
 	
 	if vehicle_wheel_node:
 		# Apply physics properties to the VehicleWheel3D node
 		_apply_physics_properties()
 		Logger.debug("Wheel initialized and linked to VehicleWheel3D", "Wheel")
+		
+		# Store initial position for movement calculation
+		last_position = global_position
 	else:
 		Logger.warning("Wheel component not linked to any VehicleWheel3D node", "Wheel")
 
@@ -70,25 +75,56 @@ func _apply_physics_properties() -> void:
 	
 	vehicle_wheel_node.wheel_radius = wheel_radius
 	vehicle_wheel_node.wheel_rest_length = suspension_travel / 2.0
-	vehicle_wheel_node.wheel_friction_slip = wheel_friction
-	vehicle_wheel_node.suspension_stiffness = suspension_stiffness
-	vehicle_wheel_node.suspension_max_force = suspension_max_force
+	vehicle_wheel_node.wheel_friction_slip = wheel_friction * 5.0  # Increased for better traction
+	vehicle_wheel_node.suspension_stiffness = suspension_stiffness * 2.0  # Increased for better ground contact
+	vehicle_wheel_node.suspension_max_force = suspension_max_force * 2.0  # Increased for better weight handling
 	vehicle_wheel_node.suspension_travel = suspension_travel
-	vehicle_wheel_node.damping_compression = damping_compression
-	vehicle_wheel_node.damping_relaxation = damping_relaxation
+	vehicle_wheel_node.damping_compression = damping_compression * 2.0  # Increased for stability
+	vehicle_wheel_node.damping_relaxation = damping_relaxation * 2.0  # Increased for stability
 	vehicle_wheel_node.use_as_steering = is_steering_wheel
 	vehicle_wheel_node.use_as_traction = is_drive_wheel
-	# Removed roll_influence assignment as it's not a valid property
+	
+	#Logger.debug("Applied physics properties to wheel: radius=%.2f, friction=%.2f, stiffness=%.2f", 
+		#[wheel_radius, wheel_friction * 5.0, suspension_stiffness * 2.0], "Wheel")
 
 func _process(delta: float) -> void:
 	if is_destroyed:
 		return
 	
-	# Handle wheel rotation visual effect if needed
+	# Handle wheel rotation visual effect
 	if wheel_mesh and vehicle_wheel_node:
-		# Calculate rotation angle based on speed and delta time
-		var rotation_angle = vehicle_wheel_node.get_rpm() * (PI / 30.0) * delta
-		wheel_mesh.rotate_x(rotation_angle)
+		# Calculate proper wheel rotation based on RPM or manual calculation
+		var rotation_angle = 0.0
+		
+		# Try using the VehicleWheel3D RPM first
+		var rpm = vehicle_wheel_node.get_rpm()
+		
+		if abs(rpm) > 0.01:
+			# Convert RPM to radians per second and then to rotation this frame
+			rotation_angle = rpm * (PI / 30.0) * delta
+			Logger.debug("Wheel RPM: %.2f, Rotation: %.5f" % [rpm, rotation_angle], "Wheel") if abs(rpm) > 10.0 else null
+		else:
+			# Fallback: calculate rotation from movement (useful if RPM isn't updating)
+			var current_pos = global_position
+			var movement = current_pos - last_position
+			
+			# Project movement onto wheel's forward vector
+			var forward = global_transform.basis.z.normalized()
+			var movement_along_forward = forward.dot(movement)
+			
+			# Calculate rotation based on distance traveled
+			rotation_angle = (movement_along_forward / (2.0 * PI * wheel_radius)) * (2.0 * PI)
+			
+			last_position = current_pos
+		
+		# Apply rotation to the wheel mesh
+		if abs(rotation_angle) > 0.0001:
+			wheel_mesh.rotate_x(rotation_angle)
+			accumulated_rotation += rotation_angle
+		
+		# Handle steering visualization (already working)
+		if is_steering_wheel and vehicle_wheel_node:
+			wheel_mesh.rotation.y = vehicle_wheel_node.steering
 		
 		# Handle dirt/mud effects when wheel is slipping
 		if mud_particle_effect:

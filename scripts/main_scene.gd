@@ -4,7 +4,7 @@ extends Node3D
 # Main scene controller script
 
 # References
-@export var player_vehicle_path: NodePath
+@export var player_vehicle_path: NodePath = "PlayerVehicle"  # Set default path
 var player_vehicle: PlayerVehicle = null
 
 func _ready() -> void:
@@ -14,7 +14,9 @@ func _ready() -> void:
 	if not player_vehicle_path.is_empty():
 		player_vehicle = get_node(player_vehicle_path)
 		if not player_vehicle:
-			Logger.error("Failed to find player vehicle", "MainScene")
+			Logger.error("Failed to find player vehicle at path: %s" % player_vehicle_path, "MainScene")
+	else:
+		Logger.error("Player vehicle path is empty", "MainScene")
 	
 	# Set up physics environment
 	_setup_environment()
@@ -23,6 +25,15 @@ func _ready() -> void:
 	_connect_signals()
 	
 	Logger.info("Main scene ready", "MainScene")
+	var input_debugger = load("res://scripts/debug/input_debugger.gd").new()
+	add_child(input_debugger)
+
+func _setup_debug_tools() -> void:
+	if player_vehicle:
+		var debugger = VehiclePhysicsDebugger.new()
+		add_child(debugger)
+		debugger.setup(player_vehicle)
+		Logger.info("Debug tools initialized", "MainScene")
 
 func _setup_environment() -> void:
 	# Set physics parameters
@@ -32,6 +43,10 @@ func _setup_environment() -> void:
 	ProjectSettings.set_setting("physics/3d/default_contact_bias", 0.0001)
 	ProjectSettings.set_setting("physics/3d/solver/contact_max_separation", 0.05)
 	ProjectSettings.set_setting("physics/3d/solver/contact_max_allowed_penetration", 0.01)
+	
+	# Additional settings for better stability
+	ProjectSettings.set_setting("physics/3d/solver/solver_iterations", 8)  # Default is 4
+	ProjectSettings.set_setting("physics/3d/solver/contact_recycle_radius", 0.1)
 	
 	Logger.debug("Environment physics configured", "MainScene")
 

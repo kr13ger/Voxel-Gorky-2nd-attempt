@@ -11,6 +11,7 @@ size = Vector3(8, 5, 27)
 
 [node name="PlayerVehicle" type="VehicleBody3D"]
 script = ExtResource("1_4ptjn")
+engine_force_value = 2e+07
 wheel_paths = Array[NodePath]([NodePath("LeftWheel"), NodePath("LeftWheel2"), NodePath("LeftWheel3"), NodePath("LeftWheel4"), NodePath("RightWheel"), NodePath("RightWheel2"), NodePath("RightWheel3"), NodePath("RightWheel4")])
 turret_path = NodePath("Hull/TurretSlot/Turret")
 hull_node_path = NodePath("Hull")
@@ -27,46 +28,70 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00456148, 1.48643, -1.7135
 
 [node name="LeftWheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.98131, 1.78799, 6.79113)
+engine_force = 1e+06
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="LeftWheel" instance=ExtResource("5_py1je")]
 
 [node name="LeftWheel2" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.98131, 1.78799, 2.04089)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="LeftWheel2" instance=ExtResource("5_py1je")]
 
 [node name="LeftWheel3" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.98131, 1.78799, -3.43991)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="LeftWheel3" instance=ExtResource("5_py1je")]
 
 [node name="LeftWheel4" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.98131, 1.78799, -8.01919)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="LeftWheel4" instance=ExtResource("5_py1je")]
 
 [node name="RightWheel" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97942, 1.78799, 6.80742)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="RightWheel" instance=ExtResource("5_py1je")]
 
 [node name="RightWheel2" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98681, 1.8142, 2.10951)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="RightWheel2" instance=ExtResource("5_py1je")]
 
 [node name="RightWheel3" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73512, 1.91148, -3.50332)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="RightWheel3" instance=ExtResource("5_py1je")]
 
 [node name="RightWheel4" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76431, 1.91267, -8.02156)
+engine_force = 10000.0
+use_as_traction = true
+use_as_steering = true
 
 [node name="Wheel" parent="RightWheel4" instance=ExtResource("5_py1je")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, -2.99004e-08, 8.21505e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 0, 19.253, -32.0897)
+transform = Transform3D(0.0413003, -0.341728, 0.938891, -1.77636e-15, 0.939693, 0.34202, -0.999147, -0.0141255, 0.0388096, 19.5734, 10.131, -0.5242)
 current = true
 fov = 45.0
 
